@@ -1,5 +1,13 @@
 base color:
 --------------------------
+black '#303134'
+red '#E15A60'
+green '#aebda1'
+blue '#678CB1'
+magenta '#a080be'
+white '#f8f7f7'
+gray '#5D6971'
+
 black #24292e
 red #f97583
 green #85e89d
@@ -9,18 +17,28 @@ magenta #b392f0
 cyan #73e3ff
 white #f6f8fa
 gray #959da5
+
+--dark
+
+let s:colors.cyan = '#3cc4dd'
+let s:colors.yellow = '#fcb650'
+
+--light
+let s:colors.cyan = '#00a8c6'
+let s:colors.yellow = '#ec9513'
+
 --------------------------
 foreground white
 background black
 --------------------------
-selection_bg #c8c8fa
+selection_bg #b392f0
 selection_fg background
 --------------------------
-cursor_bg green
+cursor_bg foreground
 cursor_fg background
-cursor_guide #2f363d
+cursor_guide #959da5
 --------------------------
-split #454d56
+split #959da5
 --------------------------
-win_bg #3a3f43
-selected_bg #1269d3
+win_bg #959da5
+selected_bg #79b8ff

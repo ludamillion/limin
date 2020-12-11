@@ -58,19 +58,26 @@ function! s:HL(group, ...) abort
   endif
 endfunction
 " ---------------------------------------------------------------------
-let g:colors_name = "ci_dark"
-set background=dark
+let g:colors_name = "limin"
+
+let s:bg = &background
 " ---------------------------------------------------------------------
-let s:colors = ci_dark#get_colors()
+let s:colors = {}
+
+if s:bg ==? 'dark'
+  let s:colors = limin#get_colors('dark')
+else
+  let s:colors = limin#get_colors('light')
+endif
 
 " editor color scheme
 " ----------------------------------------------------
-call s:HL('ColorColumn', s:colors.none, s:colors.cursor_guide)
+call s:HL('ColorColumn', s:colors.background, s:colors.cursor_guide)
 call s:HL('Conceal', s:colors.blue, s:colors.none)
 call s:HL('Cursor', s:colors.cursor_fg, s:colors.cursor_bg)
 call s:HL('CursorIM', s:colors.cursor_fg, s:colors.cursor_bg)
-call s:HL('CursorColumn', s:colors.none, s:colors.cursor_guide)
-call s:HL('CursorLine', s:colors.none, s:colors.cursor_guide)
+call s:HL('CursorColumn', s:colors.background, s:colors.cursor_guide)
+call s:HL('CursorLine', s:colors.none, s:colors.none, s:colors.bold)
 " ----------------------------------------------------
 call s:HL('Directory', s:colors.cyan, s:colors.none)
 " ----------------------------------------------------
@@ -123,7 +130,7 @@ call s:HL('StatusLineTermNC', s:colors.gray, s:colors.none)
 " ----------------------------------------------------
 call s:HL('TabLine', s:colors.foreground, s:colors.none)
 call s:HL('TabLineFill', s:colors.none, s:colors.none)
-call s:HL('TabLineSel', s:colors.foreground, s:colors.gray)
+call s:HL('TabLineSel', s:colors.background, s:colors.cyan, s:colors.bold)
 call s:HL('Terminal', s:colors.foreground, s:colors.background)
 call s:HL('Title', s:colors.red, s:colors.none)
 call s:HL('Visual', s:colors.selection_fg, s:colors.selection_bg)
@@ -133,7 +140,7 @@ call s:HL('WildMenu', s:colors.background, s:colors.cyan)
 
 " standard syntax
 " ----------------------------------------------------
-call s:HL('Comment', s:colors.gray, s:colors.none)
+call s:HL('Comment', s:colors.gray, s:colors.none, s:colors.italic)
 " ----------------------------------------------------
 call s:HL('Constant', s:colors.foreground, s:colors.none)
 call s:HL('String', s:colors.yellow, s:colors.none)
@@ -144,7 +151,7 @@ call s:HL('Float', s:colors.cyan, s:colors.none)
 call s:HL('Identifier', s:colors.blue, s:colors.none)
 call s:HL('Function', s:colors.blue, s:colors.none)
 " ----------------------------------------------------
-call s:HL('Statement', s:colors.magenta, s:colors.none, s:colors.bold)
+call s:HL('Statement', s:colors.blue, s:colors.none, s:colors.bold)
 call s:HL('Conditional', s:colors.cyan, s:colors.none, s:colors.bold)
 call s:HL('Repeat', s:colors.cyan, s:colors.none, s:colors.bold)
 call s:HL('Operator', s:colors.magenta, s:colors.none)
@@ -270,4 +277,10 @@ elseif exists('*term_setansicolors')
     \ s:colors.cyan,
     \ s:colors.white,
     \ ]
+endif
+
+if s:bg ==? 'dark'
+  set background=dark
+else
+  set background=light
 endif
