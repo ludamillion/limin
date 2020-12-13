@@ -1,4 +1,5 @@
 " Copyright (c) 2020 Ling CHU <meetchuling@gmail.com>
+" Copyright (c) 2020 Luke Inglis <ld.inglis@gmail.com>
 "
 " Permission to use, copy, modify, and distribute this software for any
 " purpose with or without fee is hereby granted, provided that the above
@@ -85,6 +86,10 @@ call s:HL('DiffAdd', s:colors.background, s:colors.green)
 call s:HL('DiffChange', s:colors.background, s:colors.yellow)
 call s:HL('DiffDelete', s:colors.background, s:colors.red)
 call s:HL('DiffText', s:colors.background, s:colors.magenta)
+
+call s:HL('DiffAdded', s:colors.green, s:colors.background)
+call s:HL('DiffChanged', s:colors.yellow, s:colors.background)
+call s:HL('DiffRemoved', s:colors.red, s:colors.background)
 " ----------------------------------------------------
 call s:HL('EndOfBuffer', s:colors.background, s:colors.none)
 " ----------------------------------------------------
@@ -99,7 +104,7 @@ call s:HL('SignColumn', s:colors.none, s:colors.none)
 call s:HL('IncSearch', s:colors.background, s:colors.magenta)
 call s:HL('LineNr', s:colors.gray, s:colors.none)
 call s:HL('CursorLineNr', s:colors.foreground, s:colors.none)
-call s:HL('MatchParen', s:colors.background, s:colors.red)
+call s:HL('MatchParen', s:colors.red, s:colors.background)
 " ----------------------------------------------------
 call s:HL('ModeMsg', s:colors.foreground, s:colors.none)
 call s:HL('MoreMsg', s:colors.green, s:colors.none)
@@ -200,7 +205,22 @@ call s:HL('LspWarningHighlight', s:colors.none, s:colors.none, s:colors.underlin
 call s:HL('LspInformationHighlight', s:colors.none, s:colors.none, s:colors.underline)
 call s:HL('LspHintHighlight', s:colors.none, s:colors.none, s:colors.underline)
 
-" ale
+
+call s:HL('LspDiagnosticsDefaultError', s:colors.red, s:colors.none)
+call s:HL('LspDiagnosticsSignError', s:colors.red, s:colors.none)
+call s:HL('LspDiagnosticsUnderlineError', s:colors.red, s:colors.none, s:colors.underline)
+
+call s:HL('LspDiagnosticsDefaultWarning', s:colors.yellow, s:colors.none)
+call s:HL('LspDiagnosticsSignWarning', s:colors.yellow, s:colors.none)
+call s:HL('LspDiagnosticsUnderlineWarning', s:colors.yellow, s:colors.none, s:colors.underline)
+
+call s:HL('LspDiagnosticsDefaultInformation', s:colors.blue, s:colors.none)
+call s:HL('LspDiagnosticsSignInformation', s:colors.blue, s:colors.none)
+call s:HL('LspDiagnosticsUnderlineInformation', s:colors.blue, s:colors.none, s:colors.underline)
+
+call s:HL('LspDiagnosticsDefaultHint', s:colors.cyan, s:colors.none)
+call s:HL('LspDiagnosticsSignHint', s:colors.cyan, s:colors.none)
+call s:HL('LspDiagnosticsUnderlineHint', s:colors.cyan, s:colors.none, s:colors.underline)
 " ----------------------------------------------------
 call s:HL('ALEErrorSign', s:colors.red, s:colors.none)
 call s:HL('ALEWarningSign', s:colors.yellow, s:colors.none)
