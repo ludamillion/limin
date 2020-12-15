@@ -59,16 +59,16 @@ function! s:HL(group, ...) abort
   endif
 endfunction
 " ---------------------------------------------------------------------
-let g:colors_name = "limin"
+let g:colors_name = "liminal"
 
 let s:bg = &background
 " ---------------------------------------------------------------------
 let s:colors = {}
 
 if s:bg ==? 'dark'
-  let s:colors = limin#get_colors('dark')
+  let s:colors = liminal#get_colors('dark')
 else
-  let s:colors = limin#get_colors('light')
+  let s:colors = liminal#get_colors('light')
 endif
 
 " editor color scheme
@@ -259,6 +259,17 @@ endif
 " ----------------------------------------------------
 call s:HL('Sneak', s:colors.foreground, s:colors.sneak_bg, s:colors.bold)
 call s:HL('SneakScope', s:colors.background, s:colors.foreground)
+
+" vim-clap
+" ----------------------------------------------------
+call s:HL('ClapSpinner', s:colors.foreground, s:colors.gray)
+call s:HL('ClapInput', s:colors.foreground, s:colors.gray)
+call s:HL('ClapDisplay', s:colors.foreground, s:colors.background)
+call s:HL('ClapCurrentSelection', s:colors.foreground, s:colors.background, s:colors.bold)
+call s:HL('ClapSelected', s:colors.cyan, s:colors.background)
+call s:HL('ClapSelectedSign', s:colors.yellow, s:colors.background)
+call s:HL('ClapCurrentSelectionSign', s:colors.red, s:colors.background)
+call s:HL('ClapPreview', s:colors.foreground, s:colors.background)
 
 " ---------------------------------------------------------------------
 if has('nvim')

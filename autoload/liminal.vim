@@ -38,7 +38,7 @@ let s:colors.underline = 'underline'
 let s:colors.bold = 'bold'
 let s:colors.italic = 'italic'
 
-function! limin#get_colors(bg) abort
+function! liminal#get_colors(bg) abort
   if a:bg ==? 'dark'
     let s:colors.foreground = s:colors.white
     let s:colors.background = s:colors.black
