@@ -13,6 +13,7 @@ endif
 if !(has('termguicolors') && &termguicolors) && !has('gui_running')
   finish
 endif
+
 " ---------------------------------------------------------------------
 function! s:HL(group, ...) abort
   execute 'highlight! ' . a:group . ' ctermfg=NONE'
@@ -43,17 +44,21 @@ function! s:HL(group, ...) abort
     execute 'highlight! ' . a:group . ' gui=NONE'
   endif
 endfunction
+
+function! s:Link(from, to) abort
+  execute 'highlight! link ' . a:from . ' ' . a:to
+endfunction
 " ---------------------------------------------------------------------
-let g:colors_name = "limin"
+let g:colors_name = "liminal"
 
 let s:bg = &background
 " ---------------------------------------------------------------------
 let s:colors = {}
 
 if s:bg ==? 'dark'
-  let s:colors = limin#get_colors('dark')
+  let s:colors = liminal#get_colors('dark')
 else
-  let s:colors = limin#get_colors('light')
+  let s:colors = liminal#get_colors('light')
 endif
 
 " editor color scheme
@@ -130,9 +135,10 @@ call s:HL('Comment', s:colors.gray, s:colors.none, s:colors.italic)
 " ----------------------------------------------------
 call s:HL('Constant', s:colors.foreground, s:colors.none)
 call s:HL('String', s:colors.yellow, s:colors.none)
+
 call s:HL('Number', s:colors.cyan, s:colors.none)
-call s:HL('Boolean', s:colors.cyan, s:colors.none)
-call s:HL('Float', s:colors.cyan, s:colors.none)
+call s:Link('Boolean', 'Number')
+call s:Link('Float', 'Number')
 " ----------------------------------------------------
 call s:HL('Identifier', s:colors.blue, s:colors.none)
 call s:HL('Function', s:colors.blue, s:colors.none)
@@ -140,7 +146,7 @@ call s:HL('Function', s:colors.blue, s:colors.none)
 call s:HL('Statement', s:colors.blue, s:colors.none, s:colors.bold)
 call s:HL('Conditional', s:colors.cyan, s:colors.none, s:colors.bold)
 call s:HL('Repeat', s:colors.cyan, s:colors.none, s:colors.bold)
-call s:HL('Operator', s:colors.magenta, s:colors.none)
+call s:HL('Operator', s:colors.green, s:colors.none)
 call s:HL('Keyword', s:colors.magenta, s:colors.none, s:colors.bold)
 call s:HL('Exception', s:colors.cyan, s:colors.none, s:colors.bold)
 " ----------------------------------------------------
@@ -237,13 +243,13 @@ if has('nvim')
   let g:terminal_color_6 = s:colors.cyan
   let g:terminal_color_7 = s:colors.white
   let g:terminal_color_8 = s:colors.gray
-  let g:terminal_color_9 = s:colors.red
-  let g:terminal_color_10 = s:colors.green
-  let g:terminal_color_11 = s:colors.yellow
-  let g:terminal_color_12 = s:colors.blue
-  let g:terminal_color_13 = s:colors.magenta
-  let g:terminal_color_14 = s:colors.cyan
-  let g:terminal_color_15 = s:colors.white
+  let g:terminal_color_9 = s:colors.red_alt
+  let g:terminal_color_10 = s:colors.green_alt
+  let g:terminal_color_11 = s:colors.yellow_alt
+  let g:terminal_color_12 = s:colors.blue_alt
+  let g:terminal_color_13 = s:colors.magenta_alt
+  let g:terminal_color_14 = s:colors.cyan_alt
+  let g:terminal_color_15 = s:colors.white_alt
 elseif exists('*term_setansicolors')
   let g:terminal_ansi_colors = [
     \ s:colors.black,
@@ -255,13 +261,13 @@ elseif exists('*term_setansicolors')
     \ s:colors.cyan,
     \ s:colors.white,
     \ s:colors.gray,
-    \ s:colors.red,
-    \ s:colors.green,
-    \ s:colors.yellow,
-    \ s:colors.blue,
-    \ s:colors.magenta,
-    \ s:colors.cyan,
-    \ s:colors.white,
+    \ s:colors.red_alt,
+    \ s:colors.green_alt,
+    \ s:colors.yellow_alt,
+    \ s:colors.blue_alt,
+    \ s:colors.magenta_alt,
+    \ s:colors.cyan_alt,
+    \ s:colors.white_alt,
     \ ]
 endif
 

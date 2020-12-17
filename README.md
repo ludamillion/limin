@@ -5,7 +5,7 @@
 Neovim/Vim
 
 ```viml
-Plug 'ludamillion/limin'
+Plug 'ludamillion/liminal'
 
 syntax on
 set termguicolors

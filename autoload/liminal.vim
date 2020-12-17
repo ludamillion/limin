@@ -1,12 +1,29 @@
 let s:colors = {}
 
 let s:colors.black = '#303134'
-let s:colors.red = '#E15A60'
-let s:colors.green = '#aebda1'
-let s:colors.blue = '#678CB1'
-let s:colors.magenta = '#a080be'
-let s:colors.white = '#f8f7f7'
 let s:colors.gray = '#5D6971'
+
+let s:colors.red = '#E15A60'
+let s:colors.red_alt = '#F85931'
+
+let s:colors.green = '#aebda1'
+let s:colors.green_alt = '#9ce393'
+
+let s:colors.yellow = '#fcb650'
+let s:colors.yellow_alt = '#ec9513'
+
+let s:colors.blue = '#678CB1'
+let s:colors.blue_alt = '#87BCD1'
+
+let s:colors.magenta = '#a080be'
+let s:colors.magenta_alt = '#f6bbe2'
+
+let s:colors.cyan = '#3cc4dd'
+let s:colors.cyan_alt = '#00a8c6'
+
+let s:colors.white = '#f8f7f7'
+let s:colors.white_alt = '#e3e2e1'
+
 
 let s:colors.cursor_guide = s:colors.gray
 
@@ -23,7 +40,7 @@ let s:colors.underline = 'underline'
 let s:colors.bold = 'bold'
 let s:colors.italic = 'italic'
 
-function! limin#get_colors(bg) abort
+function! liminal#get_colors(bg) abort
   if a:bg ==? 'dark'
     let s:colors.foreground = s:colors.white
     let s:colors.background = s:colors.black
@@ -31,8 +48,8 @@ function! limin#get_colors(bg) abort
     let s:colors.cyan = '#3cc4dd'
     let s:colors.yellow = '#fcb650'
   elseif a:bg ==? 'light'
-    let s:colors.foreground = s:colors.black
-    let s:colors.background = s:colors.white
+    let s:colors.foreground = s:colors.gray
+    let s:colors.background = s:colors.white_alt
 
     let s:colors.cyan = '#00a8c6'
     let s:colors.yellow = '#ec9513'
