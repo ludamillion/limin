@@ -28,6 +28,7 @@ let s:colors.cursor_guide = s:colors.gray
 let s:colors.split = s:colors.gray
 
 let s:colors.win_bg = s:colors.gray
+let s:colors.win_fg = s:colors.white
 let s:colors.selected_bg = s:colors.blue
 
 let s:colors.sneak_bg = s:colors.magenta

@@ -58,6 +58,11 @@ function! s:HL(group, ...) abort
     execute 'highlight! ' . a:group . ' gui=NONE'
   endif
 endfunction
+
+function! s:Link(from, to) abort
+    execute 'highlight! link ' . a:from . ' ' . a:to
+endfunction
+
 " ---------------------------------------------------------------------
 let g:colors_name = "liminal"
 
@@ -112,8 +117,8 @@ call s:HL('NonText', s:colors.gray, s:colors.none)
 " base color
 call s:HL('Normal', s:colors.foreground, s:colors.background)
 " ----------------------------------------------------
-call s:HL('Pmenu', s:colors.foreground, s:colors.win_bg)
-call s:HL('PmenuSel', s:colors.foreground, s:colors.selected_bg)
+call s:HL('Pmenu', s:colors.win_fg, s:colors.win_bg)
+call s:HL('PmenuSel', s:colors.win_fg, s:colors.selected_bg)
 call s:HL('PmenuSbar', s:colors.none, s:colors.win_bg)
 call s:HL('PmenuThumb', s:colors.none, s:colors.foreground)
 " ----------------------------------------------------
@@ -128,7 +133,7 @@ call s:HL('SpellCap', s:colors.none, s:colors.none, s:colors.underline)
 call s:HL('SpellLocal', s:colors.none, s:colors.none, s:colors.underline)
 call s:HL('SpellRare', s:colors.none, s:colors.none, s:colors.underline)
 " ----------------------------------------------------
-call s:HL('StatusLine', s:colors.foreground, s:colors.none)
+call s:HL('StatusLine', s:colors.win_fg, s:colors.selected_bg)
 call s:HL('StatusLineNC', s:colors.gray, s:colors.none)
 call s:HL('StatusLineTerm', s:colors.foreground, s:colors.none)
 call s:HL('StatusLineTermNC', s:colors.gray, s:colors.none)
@@ -205,22 +210,21 @@ call s:HL('LspWarningHighlight', s:colors.none, s:colors.none, s:colors.underlin
 call s:HL('LspInformationHighlight', s:colors.none, s:colors.none, s:colors.underline)
 call s:HL('LspHintHighlight', s:colors.none, s:colors.none, s:colors.underline)
 
-
 call s:HL('LspDiagnosticsDefaultError', s:colors.red, s:colors.none)
 call s:HL('LspDiagnosticsSignError', s:colors.red, s:colors.none)
-call s:HL('LspDiagnosticsUnderlineError', s:colors.red, s:colors.none, s:colors.underline)
+call s:HL('LspDiagnosticsUnderlineError', s:colors.none, s:colors.none, s:colors.underline)
 
 call s:HL('LspDiagnosticsDefaultWarning', s:colors.yellow, s:colors.none)
 call s:HL('LspDiagnosticsSignWarning', s:colors.yellow, s:colors.none)
-call s:HL('LspDiagnosticsUnderlineWarning', s:colors.yellow, s:colors.none, s:colors.underline)
+call s:HL('LspDiagnosticsUnderlineWarning', s:colors.none, s:colors.none, s:colors.underline)
 
 call s:HL('LspDiagnosticsDefaultInformation', s:colors.blue, s:colors.none)
 call s:HL('LspDiagnosticsSignInformation', s:colors.blue, s:colors.none)
-call s:HL('LspDiagnosticsUnderlineInformation', s:colors.blue, s:colors.none, s:colors.underline)
+call s:HL('LspDiagnosticsUnderlineInformation', s:colors.none, s:colors.none, s:colors.underline)
 
 call s:HL('LspDiagnosticsDefaultHint', s:colors.cyan, s:colors.none)
 call s:HL('LspDiagnosticsSignHint', s:colors.cyan, s:colors.none)
-call s:HL('LspDiagnosticsUnderlineHint', s:colors.cyan, s:colors.none, s:colors.underline)
+call s:HL('LspDiagnosticsUnderlineHint', s:colors.none, s:colors.none, s:colors.underline)
 " ----------------------------------------------------
 call s:HL('ALEErrorSign', s:colors.red, s:colors.none)
 call s:HL('ALEWarningSign', s:colors.yellow, s:colors.none)
