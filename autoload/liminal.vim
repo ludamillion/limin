@@ -17,10 +17,12 @@ let s:colors = {}
 
 let s:colors.black = '#303134'
 let s:colors.red = '#E15A60'
-let s:colors.green = '#aebda1'
-let s:colors.blue = '#678CB1'
-let s:colors.magenta = '#a080be'
-let s:colors.white = '#f8f7f7'
+" let s:colors.green = '#aebda1'
+let s:colors.green = '#67b19e'
+let s:colors.blue = '#678cb1'
+" let s:colors.magenta = '#a080be'
+let s:colors.magenta = '#7967b1'
+let s:colors.white = '#f7f6f3'
 let s:colors.gray = '#5D6971'
 
 let s:colors.cursor_guide = s:colors.gray
@@ -33,6 +35,7 @@ let s:colors.selected_bg = s:colors.blue
 
 let s:colors.sneak_bg = s:colors.magenta
 let s:colors.selection_bg = s:colors.magenta
+let s:colors.selection_fg = s:colors.white
 
 let s:colors.none = 'NONE'
 let s:colors.underline = 'underline'
@@ -54,7 +57,6 @@ function! liminal#get_colors(bg) abort
     let s:colors.yellow = '#ec9513'
   endif
 
-  let s:colors.selection_fg = s:colors.background
   let s:colors.cursor_bg = s:colors.foreground
   let s:colors.cursor_fg = s:colors.background
 

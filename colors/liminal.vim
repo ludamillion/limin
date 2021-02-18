@@ -108,7 +108,7 @@ call s:HL('FoldColumn', s:colors.magenta, s:colors.none, s:colors.bold)
 call s:HL('SignColumn', s:colors.none, s:colors.none)
 call s:HL('IncSearch', s:colors.background, s:colors.magenta)
 call s:HL('LineNr', s:colors.gray, s:colors.none)
-call s:HL('CursorLineNr', s:colors.foreground, s:colors.none)
+call s:HL('CursorLineNr', s:colors.yellow, s:colors.none)
 call s:HL('MatchParen', s:colors.red, s:colors.background)
 " ----------------------------------------------------
 call s:HL('ModeMsg', s:colors.foreground, s:colors.none)
@@ -152,7 +152,7 @@ call s:HL('WildMenu', s:colors.background, s:colors.cyan)
 " ----------------------------------------------------
 call s:HL('Comment', s:colors.gray, s:colors.none, s:colors.italic)
 " ----------------------------------------------------
-call s:HL('Constant', s:colors.foreground, s:colors.none)
+call s:HL('Constant', s:colors.green, s:colors.none)
 call s:HL('String', s:colors.yellow, s:colors.none)
 call s:HL('Number', s:colors.cyan, s:colors.none)
 call s:HL('Boolean', s:colors.cyan, s:colors.none)
@@ -164,17 +164,17 @@ call s:HL('Function', s:colors.blue, s:colors.none)
 call s:HL('Statement', s:colors.blue, s:colors.none, s:colors.bold)
 call s:HL('Conditional', s:colors.cyan, s:colors.none, s:colors.bold)
 call s:HL('Repeat', s:colors.cyan, s:colors.none, s:colors.bold)
-call s:HL('Operator', s:colors.magenta, s:colors.none)
+call s:HL('Operator', s:colors.green, s:colors.none)
 call s:HL('Keyword', s:colors.magenta, s:colors.none, s:colors.bold)
 call s:HL('Exception', s:colors.cyan, s:colors.none, s:colors.bold)
 " ----------------------------------------------------
 call s:HL('PreProc', s:colors.cyan, s:colors.none)
 call s:HL('Include', s:colors.cyan, s:colors.none)
-call s:HL('Define', s:colors.blue, s:colors.none)
-call s:HL('Macro', s:colors.green, s:colors.none)
+call s:HL('Define', s:colors.blue, s:colors.none, s:colors.italic)
+call s:HL('Macro', s:colors.blue, s:colors.none)
 call s:HL('PreCondit', s:colors.green, s:colors.none)
 " ----------------------------------------------------
-call s:HL('Type', s:colors.green, s:colors.none, s:colors.bold)
+call s:HL('Type', s:colors.green, s:colors.none)
 call s:HL('StorageClass', s:colors.green, s:colors.none, s:colors.bold)
 call s:HL('Structure', s:colors.magenta, s:colors.none, s:colors.bold)
 call s:HL('Typedef', s:colors.green, s:colors.none, s:colors.bold)
@@ -185,6 +185,12 @@ call s:HL('Underlined', s:colors.none, s:colors.none, s:colors.underline)
 call s:HL('Ignore', s:colors.none, s:colors.none)
 call s:HL('Error', s:colors.red, s:colors.none)
 call s:HL('Todo', s:colors.yellow, s:colors.none)
+
+" Help System
+" ----------------------------------------------------
+call s:HL('HelpExample', s:colors.yellow, s:colors.none)
+call s:HL('HelpCommand', s:colors.yellow, s:colors.none)
+call s:HL('HelpHyperTextEntry', s:colors.yellow, s:colors.none, s:colors.underline)
 
 " coc.nvim
 " ----------------------------------------------------
@@ -259,21 +265,21 @@ if !exists('g:indentLine_color_gui')
   let g:indentLine_color_gui = s:colors.split
 endif
 
-" vim-sneak
-" ----------------------------------------------------
-call s:HL('Sneak', s:colors.foreground, s:colors.sneak_bg, s:colors.bold)
-call s:HL('SneakScope', s:colors.background, s:colors.foreground)
+function SetLineHighlighting()
+  if &l:rnu == 0 && &l:nu == 0
+    call s:HL('CursorLine', s:colors.none, s:colors.none, s:colors.bold)
+    call s:HL('CursorLineNr', s:colors.gray, s:colors.none)
+  else
+    call s:HL('CursorLine', s:colors.none, s:colors.none)
+    call s:HL('CursorLineNr', s:colors.yellow, s:colors.none, s:colors.bold)
+  endif
+endfunction
 
-" vim-clap
-" ----------------------------------------------------
-call s:HL('ClapSpinner', s:colors.foreground, s:colors.gray)
-call s:HL('ClapInput', s:colors.foreground, s:colors.gray)
-call s:HL('ClapDisplay', s:colors.foreground, s:colors.background)
-call s:HL('ClapCurrentSelection', s:colors.foreground, s:colors.background, s:colors.bold)
-call s:HL('ClapSelected', s:colors.cyan, s:colors.background)
-call s:HL('ClapSelectedSign', s:colors.yellow, s:colors.background)
-call s:HL('ClapCurrentSelectionSign', s:colors.red, s:colors.background)
-call s:HL('ClapPreview', s:colors.foreground, s:colors.background)
+augroup ModalCursorLine
+  autocmd!
+  autocmd OptionSet relativenumber call SetLineHighlighting()
+  autocmd OptionSet number call SetLineHighlighting()
+augroup end
 
 " ---------------------------------------------------------------------
 if has('nvim')
@@ -319,3 +325,5 @@ if s:bg ==? 'dark'
 else
   set background=light
 endif
+
+call SetLineHighlighting()
