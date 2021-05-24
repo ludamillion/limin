@@ -219,18 +219,23 @@ call s:HL('LspHintHighlight', s:colors.none, s:colors.none, s:colors.underline)
 call s:HL('LspDiagnosticsDefaultError', s:colors.red, s:colors.none)
 call s:HL('LspDiagnosticsSignError', s:colors.red, s:colors.none)
 call s:HL('LspDiagnosticsUnderlineError', s:colors.none, s:colors.none, s:colors.underline)
+call s:HL('LspDiagnosticsVirtualTextError', s:colors.red, s:colors.none)
 
 call s:HL('LspDiagnosticsDefaultWarning', s:colors.yellow, s:colors.none)
 call s:HL('LspDiagnosticsSignWarning', s:colors.yellow, s:colors.none)
 call s:HL('LspDiagnosticsUnderlineWarning', s:colors.none, s:colors.none, s:colors.underline)
+call s:HL('LspDiagnosticsVirtualTextWarning', s:colors.gray, s:colors.none, s:colors.underline)
 
 call s:HL('LspDiagnosticsDefaultInformation', s:colors.blue, s:colors.none)
 call s:HL('LspDiagnosticsSignInformation', s:colors.blue, s:colors.none)
 call s:HL('LspDiagnosticsUnderlineInformation', s:colors.none, s:colors.none, s:colors.underline)
+call s:HL('LspDiagnosticsVirtualTextInformation', s:colors.gray, s:colors.none)
 
 call s:HL('LspDiagnosticsDefaultHint', s:colors.cyan, s:colors.none)
 call s:HL('LspDiagnosticsSignHint', s:colors.cyan, s:colors.none)
 call s:HL('LspDiagnosticsUnderlineHint', s:colors.none, s:colors.none, s:colors.underline)
+call s:HL('LspDiagnosticsVirtualTextHint', s:colors.cyan, s:colors.none)
+
 " ----------------------------------------------------
 call s:HL('ALEErrorSign', s:colors.red, s:colors.none)
 call s:HL('ALEWarningSign', s:colors.yellow, s:colors.none)
